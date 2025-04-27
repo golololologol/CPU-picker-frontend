@@ -1,10 +1,9 @@
 /// <reference types="vite/client" />
-import { defineConfig, loadEnv } from 'vite'
+import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-export default defineConfig(({ mode }) => {
-  // shell environment variables override .env files
-  const apiBase = process.env.VITE_API_BASE_URL;
+export default defineConfig(() => {
+  const apiBase = process.env.VITE_API_BASE_URL || '/api';
   return {
     plugins: [react()],
     define: { 'import.meta.env.VITE_API_BASE_URL': JSON.stringify(apiBase) },
