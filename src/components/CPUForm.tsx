@@ -30,16 +30,19 @@ export const CPUForm: React.FC<Props> = ({ initial, onCancel, onSubmit }) => {
         setSockets(data);
         // ensure socket select is pre-populated after options load
         if (initial) {
-          reset({
-            brand: initial.brand,
-            model: initial.model,
-            clockspeed: initial.clockspeed,
-            numberOfCores: initial.numberOfCores,
-            numberOfThreads: initial.numberOfThreads,
-            tdp: initial.tdp,
-            priceEur: initial.priceEur,
-            socketId: initial.socket.id,
-          });
+          // Only reset if sockets are loaded and initial is present
+          setTimeout(() => {
+            reset({
+              brand: initial.brand,
+              model: initial.model,
+              clockspeed: initial.clockspeed,
+              numberOfCores: initial.numberOfCores,
+              numberOfThreads: initial.numberOfThreads,
+              tdp: initial.tdp,
+              priceEur: initial.priceEur,
+              socketId: initial.socket.id,
+            });
+          }, 0);
         }
       })
       .catch(() => {});
