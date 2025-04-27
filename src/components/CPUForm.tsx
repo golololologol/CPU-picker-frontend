@@ -45,19 +45,6 @@ export const CPUForm: React.FC<Props> = ({ initial, onCancel, onSubmit }) => {
       .catch(() => {});
   }, [initial, reset]);
 
-  useEffect(() => {
-    if (initial) reset({
-      brand: initial.brand,
-      model: initial.model,
-      clockspeed: initial.clockspeed,
-      numberOfCores: initial.numberOfCores,
-      numberOfThreads: initial.numberOfThreads,
-      tdp: initial.tdp,
-      priceEur: initial.priceEur,
-      socketId: initial.socket.id,
-    });
-  }, [initial, reset]);
-
   const onSubmitForm = async (data: CPURequest) => {
     await onSubmit(data);
   };
