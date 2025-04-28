@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import type { Socket, CPURequest, CPU } from '../utils';
 import { fetchSockets } from '../utils';
 import { useForm } from 'react-hook-form';
@@ -10,7 +10,7 @@ interface Props {
 }
 
 export const CPUForm: React.FC<Props> = ({ initial, onCancel, onSubmit }) => {
-  const [sockets, setSockets] = React.useState<Socket[]>([]);
+  const [sockets, setSockets] = useState<Socket[]>([]);
   const { register, handleSubmit, reset, formState: { errors } } = useForm<CPURequest>({
     defaultValues: initial ? {
       brand: initial.brand,
@@ -28,21 +28,19 @@ export const CPUForm: React.FC<Props> = ({ initial, onCancel, onSubmit }) => {
     fetchSockets()
       .then(data => {
         setSockets(data);
-        // ensure socket select is pre-populated after options load
         if (initial) {
-          // Only reset if sockets are loaded and initial is present
-          setTimeout(() => {
-            reset({
-              brand: initial.brand,
-              model: initial.model,
-              clockspeed: initial.clockspeed,
-              numberOfCores: initial.numberOfCores,
-              numberOfThreads: initial.numberOfThreads,
-              tdp: initial.tdp,
-              priceEur: initial.priceEur,
-              socketId: initial.socket.id,
-            });
-          }, 0);
+          reset({
+            brand: initial.brand,
+            model: initial.model,
+            clockspeed: initial.clockspeed,
+            numberOfCores: initial.numberOfCores,
+            numberOfThreads: initial.numberOfThreads,
+            tdp: initial.tdp,
+            priceEur: initial.priceEur,
+            socketId: initial.socket.id,
+          });
+        } else {
+          reset({});
         }
       })
       .catch(() => {});
