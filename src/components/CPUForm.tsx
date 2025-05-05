@@ -90,7 +90,7 @@ export const CPUForm: React.FC<Props> = ({ initial, onCancel, onSubmit }) => {
           {errors.socketId && <span className="error">{errors.socketId.message}</span>}
         </label>
         <label>Availability
-          <input {...register('available', { required: 'Availability is required', value: true })} type="checkbox" defaultChecked={initial ? initial.available : true} />
+          <input {...register('available', { value: true })} type="checkbox" defaultChecked={initial ? initial.available : true} />
           {errors.available && <span className="error">{errors.available.message}</span>} 
         </label>
         <div className="buttons">
