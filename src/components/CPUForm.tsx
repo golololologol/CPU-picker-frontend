@@ -21,6 +21,7 @@ export const CPUForm: React.FC<Props> = ({ initial, onCancel, onSubmit }) => {
       tdp: initial.tdp,
       priceEur: initial.priceEur,
       socketId: initial.socket.id,
+      available: initial.available,
     } : {}
   });
 
@@ -38,6 +39,7 @@ export const CPUForm: React.FC<Props> = ({ initial, onCancel, onSubmit }) => {
             tdp: initial.tdp,
             priceEur: initial.priceEur,
             socketId: initial.socket.id,
+            available: initial.available,
           });
         } else {
           reset({});
