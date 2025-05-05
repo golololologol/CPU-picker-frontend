@@ -13,6 +13,7 @@ export interface CPU {
   tdp: number;
   priceEur: number;
   socket: Socket;
+  available: boolean;
 }
 
 export interface CPURequest {
@@ -24,6 +25,7 @@ export interface CPURequest {
   tdp: number;
   priceEur: number;
   socketId: number;
+  available: boolean;
 }
 
 const API_BASE: string = import.meta.env.VITE_API_BASE_URL;

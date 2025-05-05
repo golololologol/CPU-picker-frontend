@@ -94,6 +94,7 @@ export default function App() {
             <p><strong>Threads:</strong> {selectedCpu.numberOfThreads}</p>
             <p><strong>TDP:</strong> {selectedCpu.tdp}</p>
             <p><strong>Price (EUR):</strong> {selectedCpu.priceEur.toFixed(2)}</p>
+            <p><strong>Available:</strong> {selectedCpu.available ? 'Yes' : 'No'}</p>
             <div className="buttons">
               <button className='editbtn' onClick={handleModalEdit}>Edit</button>
               <button className='closebtn' onClick={() => setSelectedCpu(undefined)}>Close</button>
